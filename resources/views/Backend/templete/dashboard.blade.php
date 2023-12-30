@@ -1,5 +1,7 @@
 @extends('Backend/layouts.app')
 
+@section('title', 'Dashboard:Home')
+
 
 @section('content')
 <main id="main" class="main">

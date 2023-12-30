@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Frontend
 Route::get('/', function () {
+    return view('Frontend.templete.home');
+});
+
+
+
+
+//Backend
+Route::get('/login', function () {
+    return view('Backend.login');
+});
+
+Route::get('/admin', function () {
     return view('Backend.templete.dashboard');
 });
+
+Route::post('/login',[LoginController::class, 'authenticate']);
+
+
