@@ -29,8 +29,12 @@ Route::get('/login', function () {
 
 Route::get('/admin', function () {
     return view('Backend.templete.dashboard');
-});
+})->middleware('auth.basic');
 
 Route::post('/login',[LoginController::class, 'authenticate']);
+Route::get('/logout',[LoginController::class, 'logout']);
+
+//logout
+
 
 
