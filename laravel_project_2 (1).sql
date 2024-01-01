@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2023 at 08:06 AM
+-- Generation Time: Jan 01, 2024 at 08:22 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -54,9 +54,9 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+(7, '2014_10_12_000000_create_users_table', 1),
+(8, '2014_10_12_100000_create_password_resets_table', 1),
+(9, '2019_08_19_000000_create_failed_jobs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -107,6 +107,7 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
+  `role` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -115,18 +116,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Kevin Glover IV', 'cheyenne.hirthe@example.org', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'k3EsEQ0Z4n', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(2, 'Bette Kunze', 'vern.herman@example.net', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'HZ5wsvcZnQ', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(3, 'Miss Margarett O\'Kon DDS', 'juston.wuckert@example.com', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Pd6Z05prjr', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(4, 'Adah Auer', 'hkozey@example.net', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'OrR5OJizGv', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(5, 'Anika Gulgowski', 'marc.little@example.net', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'mP4u9v4TSa', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(6, 'Daphne Hirthe', 'keely.waelchi@example.com', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'cGJ2zqfQLp', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(7, 'Mrs. Flavie Gaylord DVM', 'amaya.barrows@example.com', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'bz5dpS1t05', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(8, 'Regan Thompson', 'jacquelyn.hegmann@example.org', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '5dQjZ0R6p0', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(9, 'Deshaun Cremin DDS', 'jaskolski.shaun@example.net', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'o9EB1Emxpv', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(10, 'Pearlie Jaskolski', 'leopold32@example.net', '2023-12-30 00:33:01', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'ClJvDHESM1', '2023-12-30 00:33:01', '2023-12-30 00:33:01'),
-(11, 'abcs', 'abc@gmail.com', NULL, '$2y$10$sUC5vCWsa0aGj.Y41Nx0negv6C.u7/BlO6fbm9pAF72AapDxTqVE6', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Masum', 'masum@gmail.com', NULL, '$2y$10$XFmB/1QEWs6UZmS2vOARaeNhQWIojSGynxSJ/VAc9vaqvVqJl163K', NULL, 1, NULL, NULL),
+(2, 'Rojoni', 'rojoni@gmail.com', NULL, '$2y$10$rafN8094SWbaOisrTM9VGu.CEkdY7oQjb3tn9IzcXuOR0YVZvzJa2', NULL, 2, NULL, NULL),
+(3, 'Trisha', 'trisha@gmail.com', NULL, '$2y$10$BAddP7F9O.6wlMsbfOgc.OUtE19cZpzwhrkaVwLpbAPOHojq/OlXu', NULL, 3, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -178,7 +171,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user1`
@@ -190,7 +183,7 @@ ALTER TABLE `user1`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

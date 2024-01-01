@@ -20,8 +20,6 @@ Route::get('/', function () {
 });
 
 
-
-
 //Backend
 Route::get('/login', function () {
     return view('Backend.login');
@@ -29,12 +27,20 @@ Route::get('/login', function () {
 
 Route::get('/admin', function () {
     return view('Backend.templete.dashboard');
-})->middleware('auth.basic');
+})->middleware('userAuth');
 
 Route::post('/login',[LoginController::class, 'authenticate']);
-Route::get('/logout',[LoginController::class, 'logout']);
+Route::get('/logout',[LoginController::class, 'logout']);//logout
 
-//logout
+Route::get('/teacher', function(){
+    return"You are in now Teacher Dashboard";
+});
+
+Route::get('/student', function(){
+    return"You are in now Student Dashboard";
+});
+
+
 
 
 
